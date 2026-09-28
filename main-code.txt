@@ -1,0 +1,22 @@
+# Lists, dicts, comprehensions
+nums = [1, 2, 3, 4, 5]
+squares = [n ** 2 for n in nums if n % 2 == 1]      # [1, 9, 25]
+counts = {"a": 3, "b": 5}
+counts["c"] = 7
+
+# Function with default arg
+def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
+
+
+# Pandas basics
+import pandas as pd
+
+df = pd.read_csv("sales.csv")
+df["revenue"] = df["price"] * df["qty"]
+summary = (
+    df[df["revenue"] > 100]
+    .groupby("region", as_index=False)["revenue"]
+    .sum()
+    .sort_values("revenue", ascending=False)
+)
